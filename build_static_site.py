@@ -17,7 +17,7 @@ from aero_association_agent.site_copy import load_site_copy, render_index
 
 
 OUTPUT_DIR = PROJECT_ROOT / "dist"
-PUBLIC_URL = re.compile(r"/(knowledge/assets|aircraft-assets|assets|fonts)/([^\"')<>\s]+)")
+PUBLIC_URL = re.compile(r"/(knowledge/assets|aircraft-assets|news-assets|assets|fonts)/([^\"')<>\s]+)")
 CLOUDFLARE_TOKEN = re.compile(r"^[A-Za-z0-9_-]{16,128}$")
 
 
@@ -53,6 +53,7 @@ def analytics_beacon() -> str:
 
 def referenced_public_files(texts: list[str]) -> list[tuple[Path, Path]]:
     roots = {
+        "news-assets": PUBLIC_ASSETS_DIR / "新闻配图",
         "aircraft-assets": PUBLIC_ASSETS_DIR / "机型目录配图",
         "assets": PUBLIC_ASSETS_DIR / "官网配图",
         "fonts": PUBLIC_ASSETS_DIR / "网页字体",
